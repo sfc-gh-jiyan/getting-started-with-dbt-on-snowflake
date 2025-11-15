@@ -1,6 +1,9 @@
 -- What tables exist?
 SHOW TABLES IN SCHEMA tb_101.raw_pos;
 
+SHOW TABLES IN DATABASE tasty_bytes_dbt_db;
+SHOW VIEWS IN DATABASE tasty_bytes_dbt_db;
+
 -- What is the scale of data? 
 SELECT COUNT(*) FROM tb_101.raw_pos.order_header;
 
