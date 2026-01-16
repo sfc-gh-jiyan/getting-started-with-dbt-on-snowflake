@@ -1,12 +1,15 @@
 USE ROLE accountadmin;
 
 CREATE OR REPLACE WAREHOUSE tasty_bytes_dbt_wh
-    WAREHOUSE_SIZE = 'small'
+    WAREHOUSE_SIZE = 'large'
     WAREHOUSE_TYPE = 'standard'
     AUTO_SUSPEND = 60
     AUTO_RESUME = TRUE
     INITIALLY_SUSPENDED = TRUE
     COMMENT = 'warehouse for tasty bytes dbt demo';
+
+--alter warehouse to medium
+ALTER WAREHOUSE tasty_bytes_dbt_wh SET WAREHOUSE_SIZE = 'large';
 
 USE WAREHOUSE tasty_bytes_dbt_wh;
 
