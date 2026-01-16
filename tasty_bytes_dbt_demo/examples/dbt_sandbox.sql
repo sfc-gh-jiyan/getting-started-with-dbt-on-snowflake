@@ -7,6 +7,8 @@ SHOW VIEWS IN DATABASE tasty_bytes_dbt_db;
 
 SHOW DBT PROJECTS in database TASTY_BYTES_DBT_DB;
 
+SHOW VERSIONS IN DBT PROJECT TASTY_BYTES_DBT_PROJECT;
+
 CREATE OR REPLACE TASK tasty_bytes_dbt_db.dev.run_prepped_data_dbt
         WAREHOUSE=tasty_bytes_dbt_wh
         SCHEDULE ='USING CRON 1 * * * * America/Los_Angeles'
@@ -20,3 +22,15 @@ drop TASK tasty_bytes_dbt_db.dev.run_prepped_data_dbt;
 DROP WAREHOUSE IF EXISTS tasty_bytes_dbt_wh;
 DROP DATABASE IF EXISTS tasty_bytes_dbt_db;
 DROP DATABASE IF EXISTS tb_101;
+
+show workspaces in database $user;
+desc workspace "getting-started-with-dbt-on-snowflake";
+
+
+SELECT user_name,client_ip
+FROM snowflake.account_usage.login_history
+WHERE true
+and event_timestamp > DATEADD(day, -30, CURRENT_TIMESTAMP())
+and IS_SUCCESS = 'YES'
+group by user_name,client_ip
+;
